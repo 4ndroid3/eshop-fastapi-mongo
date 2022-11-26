@@ -1,9 +1,21 @@
 {
 	"name": "E-Shop | Python 3.11 | Fast API | Mongo DB",
 	"image": "mcr.microsoft.com/devcontainers/python:3.11",
+	// "dockerComposeFile": "docker-compose.yml",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "none"
+		}
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"mongodb.mongodb-vscode"
+			]
 		}
 	},
 
