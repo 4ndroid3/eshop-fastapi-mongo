@@ -38,9 +38,14 @@ async def find_user(id: str):
 
 @user.put('/users/{id}')
 async def update_user(id: str, user: User):
+    user2 = dict(user)
+
     """ Actualiza un usuario """
-    user_entity(conn.eshop.user.find_one_and_update({"_id": ObjectId(id)}, {"$set": dict(user)}))
-    return "Usuario"
+    if 'password' in user2:
+        print('sssee')
+        user2['password'] = sha256_crypt.encrypt(user2["password"])
+    user_entity(conn.eshop.user.find_one_and_update({"_id": ObjectId(id)}, {"$set": user2}))
+    return user2
 
 @user.delete('/users/{id}')
 async def delete_user(id: str):
